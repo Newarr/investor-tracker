@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramp — Help Us Find Warm Paths In</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f6f8;
+    color: #1a1a1a;
+    padding: 48px 20px 100px;
+    line-height: 1.6;
+  }
+  .container { max-width: 680px; margin: 0 auto; }
+
+  /* Intro section */
+  .intro { margin-bottom: 36px; }
+  .intro h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: #111;
+    margin-bottom: 16px;
+  }
+  .intro p {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .intro p strong { color: #222; }
+
+  /* How-it-works */
+  .how-box {
+    background: #fff;
+    border: 1px solid #e0e3e8;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .how-box h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+  .steps { list-style: none; counter-reset: s; }
+  .steps li {
+    counter-increment: s;
+    padding: 6px 0;
+    padding-left: 32px;
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .steps li::before {
+    content: counter(s);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 22px; height: 22px;
+    background: #0a66c2;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Section labels */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    margin-top: 32px;
+  }
+  .section-label.high { color: #b45309; }
+  .section-label.medium { color: #6b7280; }
+  .section-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .section-label.high .section-count { background: #fef3c7; color: #92400e; }
+  .section-label.medium .section-count { background: #f3f4f6; color: #4b5563; }
+
+  /* Accordion cards */
+  .card-list { display: flex; flex-direction: column; gap: 6px; }
+  .card {
+    background: #fff;
+    border: 1px solid #e0e3e8;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .card:hover { border-color: #cdd1d7; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-header:hover { background: #fafbfc; }
+  .chevron {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    color: #bbb;
+    transition: transform 0.2s;
+  }
+  .card.open .chevron { transform: rotate(90deg); color: #666; }
+  .card-info { flex: 1; min-width: 0; }
+  .card-company {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-company img {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .card-role { font-size: 12px; color: #888; margin-top: 1px; }
+  a.search-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: #0a66c2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  a.search-btn:hover { background: #004182; }
+  a.search-btn svg { flex-shrink: 0; }
+
+  /* Expandable body */
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .card.open .card-body { max-height: 300px; }
+  .card-body-inner {
+    padding: 0 18px 16px 50px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.55;
+  }
+  .card-body-inner strong { color: #333; font-weight: 600; }
+
+  /* Checked state for buttons */
+  a.search-btn.checked {
+    background: #e2e8f0;
+    color: #64748b;
+  }
+  a.search-btn.checked:hover { background: #cbd5e1; }
+  a.search-btn.checked svg { opacity: 0.6; }
+
+  /* Sticky CTA bar */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.97);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 10;
+    font-size: 14px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  }
+  .sticky-cta-text { font-weight: 500; }
+  .sticky-cta-text strong { color: #93c5fd; }
+  .sticky-cta-counter {
+    font-size: 12px;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    padding-bottom: 72px;
+    border-top: 1px solid #e0e3e8;
+    font-size: 13px;
+    color: #999;
+    line-height: 1.7;
+  }
+  .footer strong { color: #666; font-weight: 600; }
+
+  @media (max-width: 540px) {
+    .card-header { flex-wrap: wrap; gap: 10px; }
+    a.search-btn { width: 100%; justify-content: center; margin-top: 4px; }
+    .card-body-inner { padding-left: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="intro">
+    <h1>Help Us Find Warm Paths In</h1>
+    <p>We're running a focused strategic process for Ramp and are looking for warm introductions to senior people at the companies below. Cold outreach from our bankers has stalled at several of these, and <strong>a single warm intro from the right person could unlock conversations that have been stuck for months.</strong></p>
+    <p>I would genuinely value your help here. Even one connection at one company makes a real difference.</p>
+  </div>
+
+  <div class="how-box">
+    <h2>What I'm asking you to do</h2>
+    <ol class="steps">
+      <li>Click on a company below to expand it and see who we're looking for and why.</li>
+      <li>Hit <strong>"Search your network"</strong> — LinkedIn will show your 1st-degree connections at that company.</li>
+      <li>If you see someone relevant, <strong>reply to my email with their name</strong>. I'll send you a forwardable blurb so you don't have to draft anything.</li>
+    </ol>
+  </div>
+
+  <div class="section-label high">High Priority <span class="section-count">10</span></div>
+  <div class="card-list">
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=consensys.io&sz=32" alt="">ConsenSys</div>
+          <div class="card-role">Senior strategy or corp dev</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%229373737%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        ConsenSys owns MetaMask — Ramp's single biggest integration partner. We already process transactions for their users daily. We need someone senior enough to assess whether bringing Ramp in-house fits their roadmap, especially as they prepare for an IPO where owning the full fiat-to-crypto stack strengthens the narrative.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=block.xyz&sz=32" alt="">Block (Square)</div>
+          <div class="card-role">Senior corp dev or strategy — above current contacts</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22675562%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Block reviewed our materials, asked detailed diligence questions, and we answered them all — then went completely silent. Our current contacts stopped responding. We need a path to someone more senior who can re-engage the conversation. The strategic fit is clear: Block is building a vertically integrated crypto stack (Bitkey, Cash App Bitcoin), and Ramp fills the on/off-ramp gap.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=nubank.com.br&sz=32" alt="">Nubank</div>
+          <div class="card-role">Corp dev or close to CEO / product leadership</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223767529%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Nubank is the largest digital bank in Latin America with 100M+ customers and has been expanding into crypto. Ramp already has a Brazil entity and holds LatAm licenses including PIX and SPEI — exactly what Nubank would need to build or buy to offer crypto on/off ramp to their base. We've never been able to get past the initial gatekeeper.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=shopify.com&sz=32" alt="">Shopify</div>
+          <div class="card-role">Payments strategy, corp dev, or fintech partnerships</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2210462386%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Crypto payments and stablecoin checkout for Shopify's merchant base is a natural next step — and Ramp is the infrastructure that makes it work. We've had zero response to any outreach so far. A warm intro here could open a conversation that cold outreach simply hasn't.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=klarna.com&sz=32" alt="">Klarna</div>
+          <div class="card-role">Strategy or corp dev lead</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22748731%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Klarna is building a financial super-app and crypto is a missing piece. Adding on/off-ramp capability would let their users buy, hold, and spend crypto alongside traditional payments — a differentiator in the BNPL space. No response to any outreach so far.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=wise.com&sz=32" alt="">Wise</div>
+          <div class="card-role">Product or strategy lead</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%221769571%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Wise moves money across borders for millions of people — crypto-based corridors are the obvious next step and dramatically cheaper for many routes. Ramp's multi-currency on/off-ramp infrastructure plugs directly into this. Wise's founders are Ramp investors, but that connection hasn't opened the door to the product or strategy team. We need a different angle in.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=visa.com&sz=32" alt="">Visa</div>
+          <div class="card-role">Crypto / digital asset strategy team (senior)</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222190%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        We had a management-level meeting with Visa in November — good signal, real engagement. Then it went quiet. The contact from that meeting turned out not to be the decision maker. We need someone more senior on the crypto and digital asset strategy team who can actually sponsor next steps.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=paypal.com&sz=32" alt="">PayPal</div>
+          <div class="card-role">Very senior only: crypto product or corp strategy leadership</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22150981%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        We have an active partnership track with PayPal around PYUSD, but the broader strategic conversation needs a senior sponsor. Previous contacts turned out to be the wrong level for that kind of decision. <strong>Only flag this if your connection is genuinely senior</strong> — VP+ in crypto product or corporate strategy. A mid-level partnerships contact won't move the needle here.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=stripe.com&sz=32" alt="">Stripe</div>
+          <div class="card-role">Corp dev, M&A, or path to founders</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222135371%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Stripe is aggressively moving into crypto — they acquired Bridge and are building stablecoin infrastructure. Ramp's on/off-ramp rails, licenses, and distribution are a natural fit for their stack. We have zero engagement so far despite an intro being promised months ago. This is the single biggest unlock on the list.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=32" alt="">Mastercard</div>
+          <div class="card-role">SVP+ in Crypto & Digital Currencies team, or Corp Dev / M&A leadership</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223015%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Mastercard has been running active crypto pilot programs and investing in digital asset infrastructure. Ramp's licensed, multi-currency on/off-ramp would let them offer fiat-to-crypto across their network without building it from scratch. We currently have no path into their digital assets or M&A team.
+      </div></div>
+    </div>
+
+  </div>
+
+  <div class="section-label medium">Medium Priority <span class="section-count">11</span></div>
+  <div class="card-list">
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=adyen.com&sz=32" alt="">Adyen</div>
+          <div class="card-role">President's office, CSO, or corp dev</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22279565%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Adyen is one of the largest global payment processors. We reached out about a stablecoin strategy angle and sent a teaser through our bankers, but multiple follow-ups since January have gone unanswered. A warm intro that bypasses the cold outreach inbox could get this in front of the right people.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=sumup.com&sz=32" alt="">SumUp</div>
+          <div class="card-role">CFO or Head of Strategy / M&A</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%229176559%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        SumUp is a European payments company on an IPO track that has been actively acquisitive. Stablecoin settlement and crypto payouts for their SME merchant base is a natural extension. We haven't made contact yet — a warm intro at the leadership level would let us open this before their IPO priorities lock in.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=plaid.com&sz=32" alt="">Plaid</div>
+          <div class="card-role">Corp dev or partnerships lead</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222684737%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Plaid connects apps to bank accounts — adding crypto wallet and on/off-ramp connectivity is a natural extension of their infrastructure. We had a founder-level connection that stalled, tried a different approach, still no traction. A warm intro to corp dev or partnerships would reopen this.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=tether.to&sz=32" alt="">Tether</div>
+          <div class="card-role">Any senior contact</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%224842724%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Tether is the largest stablecoin issuer and is expanding into new verticals. Owning on/off-ramp infrastructure gives them a direct fiat gateway for USDT — reducing dependency on third parties. Notoriously hard to reach. We've tried multiple intro attempts since October with no luck. Even an indirect path would help.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=moneygram.com&sz=32" alt="">MoneyGram</div>
+          <div class="card-role">Corp dev or partnerships lead (crypto side)</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%228362%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        MoneyGram is already crypto-forward — they've partnered with Stellar and Ripple. Ramp's on/off-ramp infrastructure fits their strategy of bridging traditional remittances with digital assets. We sent a teaser in November and followed up five-plus times with no response. A warm intro could break through where cold outreach hasn't.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=bitgo.com&sz=32" alt="">BitGo</div>
+          <div class="card-role">Founder or senior strategy</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223597797%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        BitGo provides institutional-grade digital asset custody and wants to expand and verticalize. Adding on/off-ramp capability would let their clients move between fiat and crypto without leaving BitGo's ecosystem — a clear value-add. We haven't yet been able to reach them through a warm intro. A personal connection to the founder or senior strategy team would open the door.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=traderepublic.com&sz=32" alt="">Trade Republic</div>
+          <div class="card-role">Founder/CEO office or corp dev</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2213014668%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Trade Republic is one of Europe's largest investment platforms and already offers crypto trading. Ramp's licensed infrastructure, wallet stack, and on/off-ramp rails would let them deepen their crypto offering without building regulated infrastructure from scratch. An introduction was sourced in November but has been idle since. A warm push could activate this.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=sofi.com&sz=32" alt="">SoFi</div>
+          <div class="card-role">CFO, corp dev, or crypto product leadership</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222301992%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        SoFi offers banking, investing, and crypto through a single app — adding licensed on/off-ramp infrastructure would strengthen their crypto stack significantly. We had engagement through our bankers but they asked to reschedule a call and then went silent despite multiple follow-ups. A warm intro could re-prioritize this internally.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=payoneer.com&sz=32" alt="">Payoneer</div>
+          <div class="card-role">CEO/CFO or Strategy / M&A</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2256101%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Payoneer moves money cross-border for millions of freelancers and businesses. Crypto-based corridors and stablecoin settlement are a clear cost and speed advantage for their core use case. Ramp's licenses and rails are exactly what they'd need to offer this. Outreach has stalled — a warm intro could reopen at the right level.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=worldline.com&sz=32" alt="">Worldline</div>
+          <div class="card-role">Deputy CEO/Strategy or M&A</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2295402%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Worldline is one of Europe's largest payment processors and has been actively acquisitive. Crypto settlement and stablecoin rails for their merchant base is a natural extension. Our bankers sent a teaser and followed up multiple times since January with no response. A warm intro could get this past the inbox.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggle(this)">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <div class="card-info">
+          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=phantom.app&sz=32" alt="">Phantom</div>
+          <div class="card-role">Only if super warm to co-founders (Brandon Millman, Chris Kalani, Francesco Agosti)</div>
+        </div>
+        <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2272352899%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Search your network
+        </a>
+      </div>
+      <div class="card-body"><div class="card-body-inner">
+        Phantom is the leading crypto wallet with millions of users across Solana, Ethereum, and Bitcoin. Owning on/off-ramp infrastructure would let them control the full stack — from fiat to wallet to DeFi — instead of relying on third-party providers. <strong>Only flag this if you have a genuinely close relationship with one of the co-founders.</strong> A cold or loose connection won't work here.
+      </div></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>If you spot a relevant connection</strong>, just reply to my email with their name and the company. I'll send you a short forwardable blurb so you don't have to draft anything yourself.
+    <br><br>
+    Thank you — this genuinely helps.
+  </div>
+
+
+</div>
+
+<div class="sticky-cta">
+  <span class="sticky-cta-text">Found a connection? <strong>Reply to my email with their name.</strong></span>
+  <span class="sticky-cta-counter" id="counter"></span>
+</div>
+
+<script>
+function toggle(header) {
+  header.closest('.card').classList.toggle('open');
+}
+
+(function() {
+  var STORAGE_KEY = 'ramp_checked_companies';
+  var checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  var buttons = document.querySelectorAll('a.search-btn');
+  var total = buttons.length;
+
+  function updateCounter() {
+    var count = Object.keys(checked).length;
+    var el = document.getElementById('counter');
+    if (count > 0) {
+      el.textContent = count + ' of ' + total + ' checked';
+    } else {
+      el.textContent = '';
+    }
+  }
+
+  buttons.forEach(function(btn) {
+    var href = btn.getAttribute('href');
+    if (checked[href]) {
+      btn.classList.add('checked');
+    }
+    btn.addEventListener('click', function() {
+      checked[href] = true;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+      btn.classList.add('checked');
+      updateCounter();
+    });
+  });
+
+  updateCounter();
+
+  // Auto-expand first 3 high priority cards
+  var cards = document.querySelectorAll('.card');
+  for (var i = 0; i < 3 && i < cards.length; i++) {
+    cards[i].classList.add('open');
+  }
+})();
+</script>
+</body>
+</html>
