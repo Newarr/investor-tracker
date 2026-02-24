@@ -1,6 +1,7 @@
 name = "investor-tracker"
 main = "worker.js"
 compatibility_date = "2024-01-01"
+account_id = "522a31624837f8b0b892db87bef83d22"
 
 [[routes]]
 pattern = "process.sypniewicz.com/"

@@ -142,6 +142,12 @@
     border-radius: 3px;
     flex-shrink: 0;
   }
+  .card-target {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0a66c2;
+    margin-top: 4px;
+  }
   .card-role { font-size: 12px; color: #888; margin-top: 1px; }
   a.search-btn {
     flex-shrink: 0;
@@ -165,9 +171,9 @@
   .card-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.3s ease;
   }
-  .card.open .card-body { max-height: 300px; }
+  .card.open .card-body { max-height: 600px; }
   .card-body-inner {
     padding: 0 18px 16px 50px;
     font-size: 13px;
@@ -175,6 +181,38 @@
     line-height: 1.55;
   }
   .card-body-inner strong { color: #333; font-weight: 600; }
+
+  /* Interaction history */
+  .interaction-history {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e3e8;
+  }
+  .interaction-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .interaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .interaction-list li {
+    padding: 6px 0;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+    border-left: 2px solid #e0e3e8;
+    padding-left: 12px;
+    margin-bottom: 4px;
+  }
+  .interaction-list li:last-child {
+    margin-bottom: 0;
+  }
 
   /* Checked state for buttons */
   a.search-btn.checked {
@@ -255,6 +293,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=consensys.io&sz=32" alt="">ConsenSys</div>
+          
           <div class="card-role">Senior strategy or corp dev</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%229373737%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -263,8 +302,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        ConsenSys owns MetaMask — Ramp's single biggest integration partner. We already process transactions for their users daily. We need someone senior enough to assess whether bringing Ramp in-house fits their roadmap, especially as they prepare for an IPO where owning the full fiat-to-crypto stack strengthens the narrative.
-                        </div></div>
+        <strong>Target:</strong> CorpDev Lead (contact via existing MetaMask integration channels)<br><br>
+        <strong>Business Case:</strong> ConsenSys MUST consolidate fiat-crypto infrastructure NOW with MetaMask serving 100M+ users. Ramp already embedded as on/off-ramp provider since 2020. Acquisition eliminates third-party dependency, captures full value chain margin, and secures strategic control over fiat flows for Infura/Linea ecosystem. MetaMask integration generating material transaction volume.<br><br>
+        <strong>Blocker:</strong> No active M&A dialogue identified. Surmountable via warm intro through existing MetaMask BD relationship (operational since 2020, last technical sync Aug 2023).<br><br>
+        <strong>Intro:</strong> Leverage Łukasz Anwajler's MetaMask partnership channel. Position as vertical integration play: "eliminate margin leak, own the rails."
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>[02/12/26] Initial Project Rocket meeting - marked Pass, Rocket to schedule follow-up</li><li>[08/29/23] Technical sync re: MetaMask operationalization (Szymon/Łukasz)</li><li>[01/27/21] Intro to MetaMask product lead via Ethworks connection</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -272,6 +315,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=block.xyz&sz=32" alt="">Block (Square)</div>
+          
           <div class="card-role">Senior corp dev or strategy — above current contacts</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22675562%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -280,8 +324,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Block reviewed our materials, asked detailed diligence questions, and we answered them all — then went completely silent. Our current contacts stopped responding. We need a path to someone more senior who can re-engage the conversation. The strategic fit is clear: Block is building a vertically integrated crypto stack (Bitkey, Cash App Bitcoin), and Ramp fills the on/off-ramp gap.
-                        </div></div>
+        <strong>Target:</strong> Block (Square) — fintech conglomerate with Square merchant payments, Cash App (57M users), Afterpay BNPL, and Bitkey self-custody bitcoin wallet. Holds 8,692 BTC on balance sheet, allocates 10% of Bitcoin product profits to BTC purchases.<br><br>
+        <strong>Business Case:</strong> Block's Bitcoin-first strategy creates MUST/NOW urgency for owned fiat-to-crypto infrastructure. Cash App's 57M users need seamless bitcoin on/off-ramps. Square merchants accepting crypto need instant settlement. TBD division building decentralized bitcoin exchange needs fiat gateway layer. Ramp's 150+ country licensed infrastructure and proven white-label embedding (MetaMask, Ledger) delivers 2-3 year acceleration vs. in-house build. Block bitcoin revenue hit $2B in Q3 2025 — nearly one-third of total revenue — proving crypto is core business, not feature.<br><br>
+        <strong>Blocker:</strong> Despite strategic alignment, Block passed on 01/27/26 citing "not a strategic fit" — likely preferring in-house build given Jack Dorsey's Bitcoin maximalism and TBD's existing infrastructure buildout.<br><br>
+        <strong>Intro:</strong> Clear Street sent teaser 12/01/25, followed standard outreach cadence. No warm intro path identified in Ramp network.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>01/27/26: Block passed, citing "not a strategic fit"</li><li>12/01/25: Clear Street sent initial teaser</li><li>Company context: Block Q3 2025 results showed bitcoin drove $2B revenue (33% of total), Q1 2024 shareholder letter led with robust Bitcoin strategy defense</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -289,6 +337,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=nubank.com.br&sz=32" alt="">Nubank</div>
+          
           <div class="card-role">Corp dev or close to CEO / product leadership</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223767529%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -297,8 +346,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Nubank is the largest digital bank in Latin America with 100M+ customers and has been expanding into crypto. Ramp already has a Brazil entity and holds LatAM licenses including PIX and SPEI — exactly what Nubank would need to build or buy to offer crypto on/off ramp to their base. We've never been able to get past the initial gatekeeper.
-                        </div></div>
+        <strong>Target:</strong> 127M-customer neobank expanding stablecoin payments infrastructure for NuPay across Brazil/Mexico/Colombia/US markets.<br><br>
+        <strong>Business Case:</strong> Nubank MUST build stablecoin-to-fiat conversion at point of payment to hit $30 ARPAC target (currently $13). Roberto Campos Neto's Meridian stablecoin payments announcement created regulatory clarity for Brazil. Revolut proved crypto conversion drives 2-3x ARPAC growth. US OCC charter requires crypto custody live by mid-2027. Current stack (Paxos custody, Talos routing, Fireblocks infrastructure) leaves gap: no one converts USDC-to-reais at point of payment, where margin lives. Build-from-scratch takes 18-30 months. We compress to weeks with licensed white-label on/off-ramp (UK/EU/US/Brazil), proven at scale (MetaMask, Ledger), solving the conversion gap NOW.<br><br>
+        <strong>Blocker:</strong> New Head of Crypto (Michael Rihani, hired from Coinbase Sep 2025) may be building own strategy; went silent after 01/11 deadline despite warm Jakub intro.<br><br>
+        <strong>Intro:</strong> Jakub → Cadu (NuPay decision maker), positioned around Campos Neto's Meridian announcement and ARPAC expansion urgency.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>[Sep 2025] Hired Michael Rihani from Coinbase as Head of Crypto—signals serious crypto expansion</li><li>[Jan 2026] Jakub intro to Cadu referencing Campos Neto Meridian stablecoin announcement, emphasized build-vs-buy time compression (18-30mo → weeks) and conversion gap in Paxos/Talos stack</li><li>[01/11/26] Cadu confirmed follow-up deadline, then went silent</li><li>[01/14/26] Passed via Clear Street banker channel—no meeting, no further engagement</li><li>[Jul 2023] Integrated Fireblocks for custody infrastructure</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -306,6 +359,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=shopify.com&sz=32" alt="">Shopify</div>
+          <div class="card-target">Target: Rana Yared → Balderton Capital, Ramp board member</div>
           <div class="card-role">Payments strategy, corp dev, or fintech partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2210462386%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -314,8 +368,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Clear Street sent teaser on Jan 8 and has followed up three times since with no response. Crypto payments and stablecoin checkout for Shopify's merchant base is a natural next step — and Ramp is the infrastructure that makes it work. A warm intro could open a conversation that cold outreach simply hasn't.
-                        </div></div>
+        <strong>Target:</strong> Native crypto payment infrastructure for Shopify's 5M+ merchant base.<br><br>
+        <strong>Business Case:</strong> Shopify's crypto payments run through third-party bolt-ons (Strike, BitPay)—crypto is the only payment method not native to Shopify Payments. Ramp's white-label on/off-ramp powers MetaMask and Ledger (10M users) and offers 2-3 year acceleration vs. in-house build. MUST/NOW: Carlos launched USDC checkout but lacks merchant payout side. Ramp provides stablecoin-to-local-currency off-ramp in 150+ countries with UK/EU/US licensing, unlocking Shopify Balance internationally where Shopify Payments doesn't operate.<br><br>
+        <strong>Blocker:</strong> Rana Yared intro prepared Feb 2023 and renewed Dec 2025, never delivered to Shopify payments team despite 3-year runway.<br><br>
+        <strong>Intro:</strong> Rana Yared (Balderton, Ramp board) to Carlos (USDC checkout lead) or payments/strategy contact.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>[Jan 2026] Clear Street teaser sent 01/08, 3x follow-ups, no response</li><li>[Dec 2025] Rana intro promised, not completed</li><li>[Feb 2023] Paulina coordinated pitch via Rana/Michael: on-ramp, NFT purchase, crypto checkout (9mo POC, 2yr global coverage)</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -323,6 +381,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=klarna.com&sz=32" alt="">Klarna</div>
+          <div class="card-target">Target: Rana Yared → Balderton Capital, Ramp board member</div>
           <div class="card-role">Strategy or corp dev lead</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22748731%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -331,8 +390,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Clear Street sent teaser on Jan 7, following up since. Klarna is building a financial super-app and crypto is a missing piece. Adding on/off-ramp capability would let their users buy, hold, and spend crypto alongside traditional payments — a differentiator in the BNPL space. We had early contact in March 2025 but it stalled.
-                        </div></div>
+        <strong>Target:</strong> Global BNPL leader (150M users, pre-IPO) expanding into crypto payment infrastructure.<br><br>
+        <strong>Business Case:</strong> Klarna MUST embed crypto payments for 150M users before IPO to compete with PayPal, Block in financial super-app strategy. Currently building "Google of shopping" - crypto checkout for merchant network is natural extension. Ramp's white-label infrastructure (powers MetaMask, Ledger) accelerates deployment 2-3 years vs. build NOW, matching 150+ country footprint with regulatory compliance already proven. Post-IPO window closing as competitors move faster.<br><br>
+        <strong>Blocker:</strong> IPO preparation (targeting 2025) = heads-down mode, crypto deprioritized short-term despite strategic urgency.<br><br>
+        <strong>Intro:</strong> Rana Yared (Balderton, Ramp board) introduced to Filippa Bolz (Chief of Staff) March 2025, connected to Ludo Lombaard (crypto lead).
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Jan 7: Clear Street teaser sent, 3x follow-ups ignored (cold outreach failing)</li><li>Mar 10: Rana intro → Filippa → Ludo, call scheduled Mar 13-14</li><li>Apr 14: Mubadala (investor) via Andreas Ferraz (Corp Dev): "teams heads down, time isn't right"</li><li>Apr 15: Klarna reversed: "do want intro after all" - internal deliberation ongoing</li><li>Follow-up status unclear post-April, IPO timing creates urgency vs. bandwidth tension</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -340,7 +403,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=wise.com&sz=32" alt="">Wise</div>
-          <div class="card-role">Product or strategy lead</div>
+          
+          <div class="card-role">Founder/CEO or very senior strategy/corp dev</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%221769571%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -348,8 +412,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Clear Street sent teaser on Jan 8 after earlier attempts stalled. Wise moves money across borders for millions of people — crypto-based corridors are the obvious next step and dramatically cheaper for many routes. Wise's founders are Ramp investors, but that connection hasn't opened the door to the product or strategy team. We need a different angle in.
-                        </div></div>
+        <strong>Target:</strong> Global money transfer giant hiring first crypto lead in 14 years to build stablecoin wallets/payments.<br><br>
+        <strong>Business Case:</strong> Wise MUST pursue NOW: hiring signals build/partner/buy decision in progress, Revolut competitive pressure creates urgency. Regulated on/off-ramps (CEO pain point) = Ramp's differentiation. CEO says regulated on/off-ramps "hardest thing to achieve reliably" - that's Ramp's core product. Revolut processed $10B+ stablecoins, forcing Wise to respond. NOW matters: teaser cold outreach failing, Digital Assets Product Lead hire imminent - window closes once they commit to build-first.<br><br>
+        <strong>Blocker:</strong> Taavet intro stalled on substance; Clear Street outreach ignored; 2022 platform discussions ghosted.<br><br>
+        <strong>Intro:</strong> Rana Yared → Morgan Stanley contact → Emmanuel Thomassin (CFO) bypasses product layer where past attempts failed.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Oct 2025: Taavet asked for "more detail" on Digital Assets hire opportunity.</li><li>Jan 2026: Clear Street teaser sent, followed up 2x, no response.</li><li>2022: Platform partnership discussions with Erik Kaju/Steve went silent after multiple follow-ups.</li><li>Strategic Urgency: Hiring first crypto Product Lead after 14 years signals imminent build/partner/buy decision. Rana CFO intro path ready but not yet activated.</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -357,7 +425,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=visa.com&sz=32" alt="">Visa</div>
-          <div class="card-role">Crypto / digital asset strategy team (senior)</div>
+          
+          <div class="card-role">Corp dev, M&A, or senior strategy</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222190%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -365,8 +434,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        We had an in-person meeting with Cuy Sheffield (Visa crypto lead) on November 3, 2025 — good signal, real engagement. Then it went quiet. Clear Street sent teaser on Jan 8 and has followed up four times since. Cuy turned out not to be the M&A decision maker. We'd welcome other intros to Visa's M&A or strategy team who can sponsor next steps.
-                        </div></div>
+        <strong>Target:</strong> Visa seeks owned crypto infrastructure for issuer toolkit to complement network position. Stripe owns Bridge ($1.1B), Mastercard bidding $1.5-2B for Zero Hash—Visa has no major crypto acquisition.<br><br>
+        <strong>Business Case:</strong> Visa crypto card spending grew 525% in 2025, with $3.5B annualized stablecoin settlement volume and $140B total crypto flows since 2020. CEO McInerney identified $200T "new flows" TAM at Feb 2025 Investor Day. MUST own infrastructure: currently partnering with Stripe's Bridge subsidiary for LATAM stablecoin cards, strategically uncomfortable. NOW: Ramp embedded in MetaMask, Trust Wallet, Ledger—the "merchant terminals" of crypto. Visa operates network, lacks owned stack.<br><br>
+        <strong>Blocker:</strong> Product/partnerships contact met (Cuy Sheffield, Nov 3, 2025), but no path to M&A decision makers. Need corp dev or strategy leadership.<br><br>
+        <strong>Intro:</strong> Rana Yared offered connection to Steven King (Visa strategy) in Feb 2026. Clear Street driving current teaser process.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Aug 2021: Cuy Sheffield reaches out: "keep hearing great things about Ramp"</li><li>2021-2022: Multiple Visa partnerships explored (Nikola Plecas crypto lead, Worldpay/Nuvei intros, Digital Partnerships team)</li><li>Nov 3, 2025: In-person meeting with Cuy at Visa offices—good engagement, wrong decision maker</li><li>Jan 8, 2026: Clear Street sends teaser, lead changes to CS</li><li>Jan 13-21: CS follows up 3x, no Visa response yet</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -374,6 +447,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=paypal.com&sz=32" alt="">PayPal</div>
+          
           <div class="card-role">Very senior only: crypto product or corp strategy leadership</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22150981%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -382,8 +456,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        We have an active partnership track with PayPal around PYUSD, but the broader strategic conversation needs a senior sponsor. December meetings confirmed: previous contacts turned out to be the wrong level for M&A decisions. Founder intro was promised but pending. <strong>Only flag this if your connection is genuinely senior</strong> — VP+ in crypto product or corporate strategy.
-                        </div></div>
+        <strong>Target:</strong> PayPal — online payments giant processing $1T+/year, launching PYUSD stablecoin distribution partnerships via MoonPay + M Zero tech stack.<br><br>
+        <strong>Business Case:</strong> Ramp MUST pursue this NOW. PayPal is subsidizing free PYUSD on-ramps for early distribution partners to scale adoption before their 400M consumer rollout. They need licensed infrastructure in 150+ countries (vs. their US-only presence), especially emerging markets with PIX/SPEI rails that Ramp owns. PayPal explicitly wants to "become the MoonPay of crypto" and recognizes they "should have been MoonPay" — this is a rare window where they're seeking external partners rather than building in-house. The branded stablecoin model (RAMPUSD backed 1:1 by PYUSD with 3.3% yield) gives Ramp treasury upside while providing free conversion into PayPal's ecosystem for our users.<br><br>
+        <strong>Blocker:</strong> Current contacts (David Weber, Brendan O'Toole) are crypto product team, not M&A decision makers — need intro to founders/C-suite level.<br><br>
+        <strong>Intro:</strong> Anil Hansjee (Fabric VC) intro to Jose Fernandez da Ponte (senior exec) in Oct 2024, very receptive to partnership discussions.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Feb 9, 2026: Deep dive with David Weber on branded stablecoin partnership model (MoonPay + M Zero), 2-3 month integration timeline, Ramp exclusive launch partner</li><li>Dec 18, 2025: Multiple discovery calls, PayPal "doubling/tripling down" on PYUSD, focus on payments vs. exchange model</li><li>Oct 17, 2024: Jose Fernandez da Ponte + Steve Everett meeting, very receptive across multiple work streams, will subsidize PYUSD on-ramps in new geos</li><li>Ongoing partnership discussions with Paul (Product), Pari (Product), Ian Cox (PayPal Ventures), Steve Everett (business justification lead)</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -391,7 +469,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=stripe.com&sz=32" alt="">Stripe</div>
-          <div class="card-role">Corp dev, M&A, or path to founders</div>
+          <div class="card-target">Target: Patrick Collison</div>
+          <div class="card-role">Founder/CEO or very senior strategy/corp dev</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222135371%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -399,8 +478,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Stripe is aggressively moving into crypto — they acquired Bridge and are building stablecoin infrastructure. Ramp's on/off-ramp rails, licenses, and distribution are a natural fit for their stack. We have zero engagement so far despite an intro being promised in December 2025. This is the single biggest unlock on the list.
-                        </div></div>
+        <strong>Target:</strong> Enable Stripe to scale stablecoin checkout and supplier payouts globally post-Bridge acquisition using Ramp's licenses, corridor coverage, and D2C product capabilities.<br><br>
+        <strong>Business Case:</strong> Stripe's $1.1B Bridge acquisition (Oct 2024) signals massive commitment to stablecoins as "core financial infrastructure" but Bridge lacks geographic licensing and live corridor scale. Ramp brings FCA registration, IE VASP, US MSB/MTL coverage, 150+ country live rails, and battle-tested D2C UX (10M users via Metamask, Trust Wallet, Opera). MUST act NOW: 70+ countries paid with stablecoins on day-1 post-Bridge reintroduction; PSP competitors (Adyen, Checkout.com, Rapyd) evaluating stablecoin strategies. Stripe needs acceleration partner to maintain first-mover advantage and turn Bridge momentum into global product surface before integration window closes.<br><br>
+        <strong>Blocker:</strong> No Corp Dev access established; Will (Corp Dev) non-responsive to Oct 2025 outreach via Spencer Crawley; commercial relationship (bi-weekly Vishal cadence with Ania Nguyen) strong but hasn't elevated to strategic M&A discussion.<br><br>
+        <strong>Intro:</strong> Spencer Crawley attempted Corp Dev intro Oct 2025 (failed); Balderton (Jen Andre, Rana Yared) offered 2022 comms/partnership intro; Patrick Collison invited Szymon to May 2025 Executive Summit; Conor (EMEA CRO) personally engaged post-Warsaw roundtable Mar 2025.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Oct 2024: Stripe acquired Bridge for $1.1B (~90x revenue); "largest-ever crypto acquisition"; Patrick Collison emphasized stablecoins will bring "significant speed, coverage and cost improvements"</li><li>Dec 2024 - Mar 2025: Intensive CEE account development via Ania Nguyen (Account Exec); executive engagement tier (Conor EMEA CRO, Katie Doyle Head EMEA Billing Sales); bi-weekly product optimization cadence established</li><li>Mar 2025: Szymon panelist at Stripe CEE Executive Roundtable (Warsaw); Conor committed to "stay close personally"</li><li>May 2025: Patrick Collison invited Szymon to Executive Summit SF (stablecoins & agentic commerce focus)</li><li>Oct 2025: Strategic outreach to Will (Corp Dev) via Spencer Crawley intro - no response; Spencer assessed "don't know him well enough"</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -408,6 +491,7 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=mastercard.com&sz=32" alt="">Mastercard</div>
+          
           <div class="card-role">SVP+ in Crypto & Digital Currencies team, or Corp Dev / M&A leadership</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223015%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -416,8 +500,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Mastercard has been running active crypto pilot programs and investing in digital asset infrastructure. Ramp's licensed, multi-currency on/off-ramp would let them offer fiat-to-crypto across their network without building it from scratch. We currently have no path into their digital assets or M&A team.
-                        </div></div>
+        <strong>Target:</strong> Mastercard — Global payments network (159B+ transactions, 3.4B cards, 210+ countries) actively expanding crypto capabilities across 80%+ of top digital neobanks and fintechs.<br><br>
+        <strong>Business Case:</strong> Mastercard MUST own crypto on/off-ramp infrastructure to enable native card-to-crypto flows across its issuer ecosystem. Current model relies on third-party conversions (Wirex, BitPay, LVL) where crypto never touches Mastercard rails—creating inefficiencies and limiting merchant acceptance. Ramp gives Mastercard turnkey infrastructure to embed crypto as a native payment method for its 3.4B cardholders globally, competing directly with Visa's USDC settlement capabilities. NOW matters: Stripe's $1.1B Bridge acquisition and accelerating crypto adoption among issuers creates competitive urgency to own the infrastructure layer.<br><br>
+        <strong>Blocker:</strong> Ramp's significant cash burn through 2027 triggered Clear Street pass on 01/14/26.<br><br>
+        <strong>Intro:</strong> Historical relationship exists—Szymon connected with Michał Turski (Poland) in February 2021 exploring crypto card integration. December 2024 active partnership discussions with Dorothea Ysenburg (VP Business Development, Frankfurt) on LatAm expansion ($6M monthly PTC volume projected via Mastercard), crypto credentials alignment, and Send/XB product feedback. Product team reviewing fix, follow-ups ongoing.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Feb 2021: Szymon reached out to Michał Turski exploring crypto-to-card integration and DeFi wallet connectivity</li><li>Feb 2024: External intro offer from Clear Street contact (LinkedIn post on Mastercard crypto 2024 plans)</li><li>Dec 2024: Active partnership track with Dorothea Ysenburg. Ramp proposed $6M monthly PTC volume in LatAm with 1-2 month ramp-up</li><li>Jan 2026: Clear Street sent teaser 01/08/26, deal passed 01/14/26 citing cash burn concerns</li></ul></div>
+                </div></div>
     </div>
 
   </div>
@@ -430,7 +518,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=adyen.com&sz=32" alt="">Adyen</div>
-          <div class="card-role">President's office, CSO, or corp dev</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%22279565%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -438,8 +527,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Clear Street sent teaser on Jan 8 after earlier attempts went unanswered. We reached out about a stablecoin strategy angle in October 2025 through Szymon directly, but multiple follow-ups since January have gone unanswered. A warm intro that bypasses the cold outreach inbox could get this in front of the right people.
-                        </div></div>
+        <strong>Target:</strong> Global payment processor ($20B+ valuation) competing with Stripe's stablecoin expansion; strong in Far East Asia and North America merchant acquiring.<br><br>
+        <strong>Business Case:</strong> Adyen MUST add stablecoin infrastructure NOW to defend market position against Stripe (shipped stablecoin checkout May 2024) and capitalize on $1T+ payment volume shift. Industry intel confirms Adyen/Klarna "signalling interest" in stablecoins (BVNK Feb 2025). Ramp accelerates 2-3 years with white-label infrastructure covering 150+ countries, matching Adyen's compliance-first culture and geographic footprint. Merchant demand real: PayPal, Visa, Mastercard already deployed.<br><br>
+        <strong>Blocker:</strong> Cold outreach failing (Clear Street 3+ follow-ups, no response). Oct 2025 Szymon email via Brent to "Pieter" unanswered. MoonPay may have existing partnership. No identified decision makers beyond generic contacts.<br><br>
+        <strong>Intro:</strong> Piotr Debek (Ramp Legal) reviewed Adyen MSA in Oct 2022 as "potential acquirer" — commercial relationship history exists. Warm intro path through Piotr's contacts or Money20/20 events where Adyen attends.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Feb 2025: BVNK newsletter explicitly cites "Adyen signalling interest" in stablecoin payments</li><li>Jan 2026: Clear Street sent teaser (Jan 8), followed up 3x — no response</li><li>Oct 2025: Szymon cold email via Brent to Pieter re: stablecoin strategy — no response</li><li>Oct 2022: Piotr Debek requested Adyen MSA review for "potential acquirer" partnership</li><li>May 2024: Stripe launches stablecoin checkout — competitive pressure begins</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -447,7 +540,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=sumup.com&sz=32" alt="">SumUp</div>
-          <div class="card-role">CFO or Head of Strategy / M&A</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%229176559%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -455,8 +549,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        SumUp is a European payments company on an IPO track that has been actively acquisitive. Stablecoin settlement and crypto payouts for their SME merchant base is a natural extension. We haven't made contact yet — a warm intro at the leadership level would let us open this before their IPO priorities lock in.
-                        </div></div>
+        <strong>Target:</strong> London-based merchant acquirer (4M SMB merchants, 36 countries) preparing $15B IPO in 2026; acquiring banking infrastructure via Paysolut to become full merchant financial OS.<br><br>
+        <strong>Business Case:</strong> SumUp MUST enable stablecoin settlement for cross-border merchants NOW to differentiate pre-IPO and counter Stripe/Bridge competitive threat. Cross-border SMBs lose 3-5% to FX fees and wait T+2/T+3 for payouts; USDC settlement via Ramp delivers instant settlement, cuts costs, and unlocks float yield on merchant balances held in SumUp Business Accounts. Recent Paysolut acquisition signals banking expansion ambition; stablecoin rails are natural next layer for merchant financial OS strategy. IPO timing creates urgency: "banking future of global SMB commerce with stablecoin settlement" is differentiated public markets narrative vs. commodity card acquirer story.<br><br>
+        <strong>Blocker:</strong> No direct contact established; warm intros available but not yet activated.<br><br>
+        <strong>Intro:</strong> Max Moldenhauer (Sunfish Partners) offered CEO/CTO intro January 2022: "I know the CTO and CEO very well." Marcus Erken added October 2025: co-founder Petter Made backchannel available for strategic escalation.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Jan 2022: Max Moldenhauer offers high-level intro to Daniel Klein (CEO) and Johannes Schaback (CTO mention, current title unclear) after Szymon shares Ramp progress update</li><li>Oct 2025: Marcus Erken adds Petter Made (co-founder) to tracker, offers backchannel for M&A-level discussions</li><li>Current status: Dual intro path available but not executed; recommended approach is Max → CEO for commercial conversation, reserve Marcus → co-founder for strategic escalation</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -464,7 +562,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=plaid.com&sz=32" alt="">Plaid</div>
-          <div class="card-role">Corp dev or partnerships lead</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222684737%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -472,8 +571,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Clear Street sent teaser on Jan 8 after earlier approaches stalled. Plaid connects apps to bank accounts — adding crypto wallet and on/off-ramp connectivity is a natural extension of their infrastructure. We reached out about a stablecoin strategy angle in October 2025 but got no traction. A warm intro to corp dev or partnerships would reopen this.
-                        </div></div>
+        <strong>Target:</strong> Plaid – $13.4B valuation, $800M ARR fintech infrastructure provider connecting 8,000+ customers (Coinbase, Kraken, Robinhood) to 11,000 US banks covering 200M+ accounts.<br><br>
+        <strong>Business Case:</strong> Plaid MUST expand beyond data aggregation into crypto payments as traditional fintech growth slows and existing crypto customers increasingly need fiat-to-crypto infrastructure. Strategic NOW: after failed $5.3B Visa acquisition (blocked by DOJ antitrust), Plaid refocused on standalone growth and adjacent markets including crypto/stablecoins. Ramp brings licensed fiat-crypto rails (UK/EU/US), 300+ integrations, and crypto payment expertise vs. multi-year Plaid internal build. Historical partnership discussions (2021-2022) with Bruno exploring "Plaid wrapping Ramp for on-ramp in Europe" model demonstrate ongoing crypto strategy interest.<br><br>
+        <strong>Blocker:</strong> No executive engagement post-teaser; mid-level product outreach only (Ben Schiller GTM pitches Aug-Oct 2025, Szymon's stablecoin outreach Oct 2025 to Lauren/Mochary went cold).<br><br>
+        <strong>Intro:</strong> Lead changed to Clear Street with teaser sent 01/08/26; CS followed up 01/14 and 01/21 with no response. Board requesting CS process update (Feb 2026 emails confirm M&A track is priority #1).
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>2021-2022: Bruno (Plaid web3 strategy) mapped crypto fintech landscape, explored Ramp partnership model, asked about strategic investment in funding round</li><li>2024-2025: Ben Schiller mass outreach to Ramp team pitching ACH/fraud/KYC products (Signal: 85% chargeback reduction, Layer: 50% conversion uplift)</li><li>Oct 2025: Szymon reached out to Lauren (Mochary) re: stablecoin strategy, Money20/20 meeting</li><li>Jan 2026: CS teaser sent (01/08), followed up twice (01/14, 01/21), no response</li><li>Feb 2026: Board requesting CS to present M&A process update</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -481,7 +584,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=tether.to&sz=32" alt="">Tether</div>
-          <div class="card-role">Any senior contact</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%224842724%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -489,8 +593,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Tether is the largest stablecoin issuer and is expanding into new verticals. Owning on/off-ramp infrastructure gives them a direct fiat gateway for USDT — reducing dependency on third parties. Notoriously hard to reach. We've tried multiple intro attempts since October 2025 including through Jakub Zakrzewski to VP Global Expansion Marco Dal Lago — still no movement. Even an indirect path would help.
-                        </div></div>
+        <strong>Target:</strong> Tether - $140B USDT issuer expanding into owned infrastructure to reduce third-party dependency.<br><br>
+        <strong>Business Case:</strong> Tether MUST own fiat gateway infrastructure to control USDT liquidity and compete against Circle's aggressive subsidization in emerging markets. Ramp brings 150+ country licensed coverage, proven USDT partnership success (TON exclusive launch April 2024, featured in Coindesk as only on/off-ramp provider), and 8M+ users processing $1B+ annually. Circle is NOW subsidizing zero-fee USDC with no-KYC up to $500/week across key markets. Tether needs acquisition speed to maintain market dominance.<br><br>
+        <strong>Blocker:</strong> Partnership relationship exists (TON campaign, Dec 2024 proposal to Caine), but zero M&A engagement - notoriously difficult to reach strategic/corp dev level.<br><br>
+        <strong>Intro:</strong> Max Engelen (Ramp) has direct line to Phillip Gradwell (Head of Economics, Tether) - highest-value escalation path to strategic discussions.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>April 2024: Ramp exclusive launch partner for USDT on TON (90-day zero-fee campaign, Coindesk featured as only on/off-ramp out of 29 services)</li><li>Oct 2024: Szymon/Michele discussions - Max confirmed direct line to Phillip Gradwell, Jose connected to Daniel Banayo (USDT TON lead) and Turkey Expansion Manager</li><li>Dec 2024: Henry sent partnership proposal to Caine ($750K-$3M subsidy options) highlighting Circle's competitive threat in LatAm</li><li>Oct 2025: Failed intro attempt via Jakub Zakrzewski to Marco Dal Lago (VP Global Expansion) - no movement by Nov</li><li>Feb 2026: Arnoud Star Busmann (Quantoz) discussions about joint approach - exploring collaboration angle</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -498,7 +606,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=moneygram.com&sz=32" alt="">MoneyGram</div>
-          <div class="card-role">Corp dev or partnerships lead (crypto side)</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%228362%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -506,8 +615,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        MoneyGram is already crypto-forward — they've partnered with Stellar and Ripple. Ramp's on/off-ramp infrastructure fits their strategy of bridging traditional remittances with digital assets. We sent a teaser through Clear Street in late 2025 and followed up six-plus times with no response. A warm intro could break through where cold outreach hasn't.
-                        </div></div>
+        <strong>Target:</strong> Global remittance provider ($1.1B revenue) with 300k+ cash locations, pivoting from transaction-based to stablecoin wallet business via Stellar partnership.<br><br>
+        <strong>Business Case:</strong> MoneyGram MUST transform from declining wire transfer model to wallet-based stablecoin accounts. Their MoneyGram Access™ enables USDC-to-cash conversions at 300k+ locations globally, but they lack technology to build quasi-bank stablecoin wallets with yield/spend features. NOW is critical as fintech competitors erode traditional remittance margins—they need wallet infrastructure to shift from one-time transactions to recurring customer relationships in developing markets where they have distribution dominance.<br><br>
+        <strong>Blocker:</strong> No active pipeline momentum since Token2049 meeting (Sept 2024); Clear Street handling outreach but repeated follow-ups (Dec-Jan) suggest stalled engagement.<br><br>
+        <strong>Intro:</strong> Warm relationship through Token2049 Singapore meeting (Sept 2024) with partnerships lead Jonathan Lira; initial discussions coordinated summer 2024 with Sebastien Gilquin and Jose Atalaya.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Jul 2024: Initial partnership calls scheduled with Jonathan Lira, Sebastien Gilquin, Jose Atalaya</li><li>Sept 19, 2024: Token2049 Singapore meeting at L3 Cafe with MoneyGram partnerships team (Jonathan Lira, Alex Smith, Jose Jimenez-Mancha, Ziad El Baba)</li><li>Nov 5, 2025: Teaser shared by Clear Street</li><li>Dec 2024-Jan 2026: Clear Street follow-ups (12/02, 01/05, 01/13, 01/21) with no documented response</li><li>Status: Contacted but potentially cooling; needs direct re-engagement to revive momentum</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -515,7 +628,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=bitgo.com&sz=32" alt="">BitGo</div>
-          <div class="card-role">Founder or senior strategy</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%223597797%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -523,8 +637,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        BitGo provides institutional-grade digital asset custody and wants to expand and verticalize. Adding on/off-ramp capability would let their clients move between fiat and crypto without leaving BitGo's ecosystem — a clear value-add. We haven't yet been able to reach them through a warm intro. A personal connection to the founder or senior strategy team would open the door.
-                        </div></div>
+        <strong>Target:</strong> BitGo is the largest independent digital asset custodian, securing ~20% of all on-chain Bitcoin transactions by value with $100B+ in assets under custody. The company holds a federal OCC bank charter and recently completed its IPO after missing the 2024 window.<br><br>
+        <strong>Business Case (MUST/NOW):</strong> Combining BitGo's institutional custody, trading, and settlement infrastructure with Ramp's consumer-facing fiat-to-crypto on/off-ramp would create a full-stack crypto financial services platform spanning retail and institutional markets. BitGo's major clients (Coinbase, Robinhood, eToro, Fireblocks) all need compliant fiat rails that Ramp provides. The strategic timing is NOW: post-IPO companies seek accretive M&A to expand service offerings and justify public valuations. Ramp's MICA passport and 40+ US state licenses complement BitGo's federal charter, enabling a globally licensed crypto-to-fiat infrastructure.<br><br>
+        <strong>Blocker:</strong> BitGo was unresponsive after receiving the teaser. Internal discussion (Feb 6, 2026) noted BitGo is "overwhelmed" following their missed IPO window and subsequent price decline, creating bandwidth constraints for evaluating strategic opportunities.<br><br>
+        <strong>Intro:</strong> Clear Street sent teaser on 01/28/26. No response received through follow-up attempts. Deal marked passed on 01/30/26.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>2021-2022: Galaxy Digital announced $1.2B acquisition (May 2021), deal collapsed in Aug 2022 over failure to deliver audited 2021 financials</li><li>Federal Charter: Holds OCC bank charter, positioning as regulated institutional custody provider</li><li>Staking Infrastructure: Figment (active Rocket target) provides staking services through BitGo platform, serving mutual clients including Robinhood, eToro, Coinbase, Anchorage, Fireblocks</li><li>IPO Context: Missed 2024 IPO window, completed public offering in 2025/2026 period; post-IPO price decline created internal focus issues</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -532,7 +650,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=traderepublic.com&sz=32" alt="">Trade Republic</div>
-          <div class="card-role">Founder/CEO office or corp dev</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2213014668%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -540,8 +659,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Trade Republic is one of Europe's largest investment platforms and already offers crypto trading. Ramp's licensed infrastructure, wallet stack, and on/off-ramp rails would let them deepen their crypto offering without building regulated infrastructure from scratch. An introduction was sourced in November 2025 but has been idle since. A warm push could activate this.
-                        </div></div>
+        <strong>Target:</strong> Trade Republic - Europe's leading mobile brokerage (4M+ users, €6B+ AUM, $5B+ valuation) with banking license and crypto offering in Germany.<br><br>
+        <strong>Business Case:</strong> Trade Republic MUST match Revolut/N26 crypto capabilities to defend market position. Revolut launched retail crypto December 2025, N26 deployed crypto wallet October 2022 - Trade Republic risks falling behind. Ramp's MiCAR-compliant SDK offers 6-12 month speed advantage vs in-house build while competitors capture market share. Banking license + existing crypto trading = perfect stablecoin infrastructure partner. NOW because competitive window closing as German neobroker market consolidates.<br><br>
+        <strong>Blocker:</strong> No direct warm intro to Trade Republic leadership; must reactivate dormant TCV relationship (2.5 years since last contact June 2022).<br><br>
+        <strong>Intro:</strong> Warm path via Serhat Kizilboga at TCV (Trade Republic investor) - had 8-month active dialogue Oct 2021-Jun 2022 on on-ramp infrastructure, explicitly offered portfolio company intros.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>Nov 2024: Company sourced introduction</li><li>Oct 2021-Jun 2022: Active dialogue with TCV (investor) - multiple meetings, discussed Ramp's SDK/API suite, TCV called themselves "big fans of your vision"</li><li>Dec 2025: Competitive threat intensified - Revolut entered retail crypto trading</li><li>Context: German neobroker "Project Taurus" pitched April 2023 showed market appetite for integrated crypto/securities platforms (71K→369K traders projected)</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -549,7 +672,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=sofi.com&sz=32" alt="">SoFi</div>
-          <div class="card-role">CFO, corp dev, or crypto product leadership</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%222301992%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -557,8 +681,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        SoFi offers banking, investing, and crypto through a single app — adding licensed on/off-ramp infrastructure would strengthen their crypto stack significantly. We had engagement through Clear Street and SoFi asked to reschedule a call in December 2025, then went silent despite multiple follow-ups. A warm intro could re-prioritize this internally.
-                        </div></div>
+        <strong>Target:</strong> US digital bank with OCC charter, NASDAQ-listed, multi-million member base. Launched crypto trading Nov 2025.<br><br>
+        <strong>Business Case:</strong> MUST enable international transfers and stablecoin yield accounts NOW to compete with neobanks (Revolut crypto = top revenue driver). Ramp's white-label on/off-ramp infrastructure provides 2-3 quarter speed-to-market vs. 18-24 month build, covering 150+ countries with US MSB + MTLs aligned to SoFi's regulatory posture. Cross-border expansion gap = strongest wedge for US-focused bank lacking international capabilities.<br><br>
+        <strong>Blocker:</strong> Cold outreach via Clear Street lost momentum after Dec 2 reschedule request; needs warm intro to crypto/product leadership.<br><br>
+        <strong>Intro:</strong> Clear Street sent teaser 11/05/25, SoFi requested reschedule 12/02/25, then silent through 4 follow-ups.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>11/05/25: Teaser sent by Clear Street</li><li>11/25: SoFi launched crypto trading with "bank-level confidence" positioning</li><li>12/02: SoFi requested to reschedule call (interest signal)</li><li>12/08, 01/05, 01/12: Clear Street follow-ups, no response (cooling)</li><li>Current: Stage-1, low engagement quality, needs re-engagement trigger using crypto launch as hook</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -566,7 +694,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=payoneer.com&sz=32" alt="">Payoneer</div>
-          <div class="card-role">CEO/CFO or Strategy / M&A</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2256101%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -574,8 +703,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Payoneer moves money cross-border for millions of freelancers and businesses. Crypto-based corridors and stablecoin settlement are a clear cost and speed advantage for their core use case. Ramp's licenses and rails are exactly what they'd need to offer this. Clear Street has been following up since November 2025 with no response — a warm intro could reopen at the right level.
-                        </div></div>
+        <strong>Target:</strong> Global B2B payout network serving marketplace sellers and contractors across 100+ countries with deep Amazon, eBay, Airbnb, Upwork, Shopify integrations.<br><br>
+        <strong>Business Case:</strong> Payoneer runs massive long-tail payouts across difficult corridors, locking working capital in transit while absorbing high FX costs. USDC instant payouts with local cash-out would release trapped float, cut DSO, reduce costs, and lift NPS. Payoneer MUST act NOW as competitors (Wise Platform, Airwallex, Tipalti) race to productize stablecoin settlement—first movers capture new margin pools.<br><br>
+        <strong>Blocker:</strong> Multiple Clear Street follow-ups with no response suggests lack of champion or wrong stakeholder (needs VP Finance/Treasury/Payments).<br><br>
+        <strong>Intro:</strong> Clear Street sent teaser 11/05/25, followed up four times through 01/05/26.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>01/05: CS fourth follow-up, no response</li><li>12/02: CS third follow-up</li><li>11/18: CS second follow-up</li><li>11/11: CS first follow-up</li><li>11/05: CS sent teaser</li><li>06/22: Ramp declined recruiting intro to ex-Payoneer CEE Manager via TechTree</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
@@ -583,7 +716,8 @@
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
           <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=worldline.com&sz=32" alt="">Worldline</div>
-          <div class="card-role">Deputy CEO/Strategy or M&A</div>
+          
+          <div class="card-role">Senior strategy, corp dev, or partnerships</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2295402%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -591,15 +725,20 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Worldline is one of Europe's largest payment processors and has been actively acquisitive. Crypto settlement and stablecoin rails for their merchant base is a natural extension. Clear Street sent a teaser and followed up multiple times since January 2026 with no response. A warm intro could get this past the inbox.
-                        </div></div>
+        <strong>Target:</strong> Worldline — major European payment services provider with payment processing, acquiring, and terminals across EU. Holds Payment Institution licenses in multiple EU countries, operates merchant acquiring network continent-wide. French origin, European leader in payment acceptance.<br><br>
+        <strong>Business Case:</strong> Ramp's APAC and emerging market expansion creates MUST/NOW urgency for alternative payment methods orchestration. Worldline's payment gateway aggregation delivers vendor discovery, APM market research, contingency connections per APM, and faster integration time through single connection. APMs now volume contender alongside cards globally — users choose cheapest option with highest success rates, partners mandate conversion rate thresholds. Worldline's EU Payment Institution licenses plus MiCA pathway create EU-wide crypto payment capability via merchant network, enabling B2B crypto acceptance use case. 2-3 year acceleration vs. piecemeal APM integrations across Southeast Asia and Europe.<br><br>
+        <strong>Blocker:</strong> Stage 2 contacted status since 01/21/26. Clear Street leading outreach, no warm intro identified. Historical March 2023 discovery (via Ker Farn Lee) identified limitations: Worldline cannot assist with VASP licensing by country or provide whitelabel fiat-crypto on-ramp services — positioning as orchestration layer, not direct competitor.<br><br>
+        <strong>Intro:</strong> Clear Street sent teaser 01/08/26, followed up 01/14/26 and 01/21/26. No response yet. Historical context: Ker Farn Lee forwarded earlier Worldline conversation from March 2023, showing existing awareness of potential partnership.
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>01/21/26: Clear Street followed up on teaser</li><li>01/14/26: Clear Street followed up on teaser</li><li>01/08/26: Clear Street sent initial teaser</li><li>Mar 2023: Ker Farn Lee explored Worldline for APAC payment gateway aggregation and APM orchestration services</li><li>Company positioning: Payment orchestration layer (vs direct acquiring), aligns with Ramp's evaluation of Spreedly, Inai Platform, Xendit, Volt.io</li><li>Strategic context: Distinct from Worldpay (existing Ramp partner since 2021) — Worldline offers orchestration, not direct card acquiring</li></ul></div>
+                </div></div>
     </div>
 
     <div class="card">
       <div class="card-header" onclick="toggle(this)">
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         <div class="card-info">
-          <div class="card-company"><img src="https://www.google.com/s2/favicons?domain=phantom.app&sz=32" alt="">Phantom</div>
+          <div class="card-company"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxMjAwIiB2aWV3Qm94PSIwIDAgMTIwMCAxMjAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yNTk2XzEzODU4OCkiPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIHJ4PSIyNTcuNTkyIiBmaWxsPSIjQUI5RkYyIi8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01MTcuMjE5IDc3OS44MTRDNDcwLjEwMiA4NTIuMDEyIDM5MS4xNDggOTQzLjM3OCAyODYuMDkgOTQzLjM3OEMyMzYuNDI2IDk0My4zNzggMTg4LjY3MiA5MjIuOTMzIDE4OC42NzIgODM0LjEyMkMxODguNjcyIDYwNy45NDMgNDk3LjQ4IDI1Ny44MTMgNzg0LjAwNCAyNTcuODEzQzk0Ny4wMDQgMjU3LjgxMyAxMDExLjk1IDM3MC45MDIgMTAxMS45NSA0OTkuMzI2QzEwMTEuOTUgNjY0LjE2OCA5MDQuOTggODUyLjY1MSA3OTguNjQ4IDg1Mi42NTFDNzY0LjkwMiA4NTIuNjUxIDc0OC4zNDcgODM0LjEyMiA3NDguMzQ3IDgwNC43MzJDNzQ4LjM0NyA3OTcuMDY1IDc0OS42MjEgNzg4Ljc1OSA3NTIuMTY4IDc3OS44MTRDNzE1Ljg3NSA4NDEuNzg5IDY0NS44MzYgODk5LjI5MiA1ODAuMjU0IDg5OS4yOTJDNTMyLjUgODk5LjI5MiA1MDguMzA1IDg2OS4yNjMgNTA4LjMwNSA4MjcuMDk0QzUwOC4zMDUgODExLjc2IDUxMS40ODggNzk1Ljc4NyA1MTcuMjE5IDc3OS44MTRaTTkwNC4zNjMgNDk0Ljg2OUM5MDQuMzYzIDUzMi4yOTEgODgyLjI4NCA1NTEuMDAyIDg1Ny41ODYgNTUxLjAwMkM4MzIuNTE0IDU1MS4wMDIgODEwLjgwOSA1MzIuMjkxIDgxMC44MDkgNDk0Ljg2OUM4MTAuODA5IDQ1Ny40NDggODMyLjUxNCA0MzguNzM3IDg1Ny41ODYgNDM4LjczN0M4ODIuMjg0IDQzOC43MzcgOTA0LjM2MyA0NTcuNDQ4IDkwNC4zNjMgNDk0Ljg2OVpNNzY0LjAzMSA0OTQuODcxQzc2NC4wMzEgNTMyLjI5MyA3NDEuOTUyIDU1MS4wMDQgNzE3LjI1NCA1NTEuMDA0QzY5Mi4xODIgNTUxLjAwNCA2NzAuNDc3IDUzMi4yOTMgNjcwLjQ3NyA0OTQuODcxQzY3MC40NzcgNDU3LjQ0OSA2OTIuMTgyIDQzOC43MzkgNzE3LjI1NCA0MzguNzM5Qzc0MS45NTIgNDM4LjczOSA3NjQuMDMxIDQ1Ny40NDkgNzY0LjAzMSA0OTQuODcxWiIgZmlsbD0iI0ZGRkRGOCIvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9ImNsaXAwXzI1OTZfMTM4NTg4Ij48cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxMjAwIiBmaWxsPSJ3aGl0ZSIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==" alt="">Phantom</div>
+          
           <div class="card-role">Only if super warm to co-founders (Brandon Millman, Chris Kalani, Francesco Agosti)</div>
         </div>
         <a class="search-btn" href="https://www.linkedin.com/search/results/people/?currentCompany=%5B%2272352899%22%5D&network=%5B%22F%22%5D" target="_blank" onclick="event.stopPropagation()">
@@ -608,8 +747,12 @@
         </a>
       </div>
       <div class="card-body"><div class="card-body-inner">
-        Phantom is the leading crypto wallet with millions of users across Solana, Ethereum, and Bitcoin. Owning on/off-ramp infrastructure would let them control the full stack — from fiat to wallet to DeFi — instead of relying on third-party providers. <strong>Only flag this if you have a genuinely close relationship with one of the co-founders (Brandon Millman, Chris Kalani, Francesco Agosti).</strong> A cold or loose connection won't work here.
-                        </div></div>
+        <strong>Target:</strong> Phantom (15M users, multi-chain wallet, backed by Sequoia/Paradigm at $150M Series C).<br><br>
+        <strong>Business Case:</strong> Phantom MUST own KYC to prevent user churn to MoonPay/Coinbase. Their white-label on-ramp strategy requires proprietary fiat infrastructure to control customer relationships and avoid lock-in. Ramp's B2B network (MetaMask, Trust Wallet) becomes an acquisition funnel, not a liability, if kept separate post-close. This is NOW critical as they compete with licensed players like Robinhood/Revolut while scaling their cash product.<br><br>
+        <strong>Blocker:</strong> Not strategic focus at time of evaluation (10/27); they were debating licensed vs. self-custodial route and questioned fit with B2B operations.<br><br>
+        <strong>Intro:</strong> Joe Wadcan (Phantom) connected through Dave (former Phantom support, introduced Ramp in 2021).
+        <div class="interaction-history"><div class="interaction-label">Interaction History:</div><ul class="interaction-list"><li>10/10/25: Deep strategy meeting with Joe; reframed B2B as acquisition funnel, proposed keeping companies separate to serve competing wallets</li><li>10/13/25: Discussed 9-digit valuation range with Clear Street</li><li>10/27/25: Deal passed as "not strategic focus"</li><li>Historical context: 2021-2023 conversations about complementing MoonPay integration</li></ul></div>
+                </div></div>
     </div>
 
   </div>

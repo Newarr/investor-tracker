@@ -79,7 +79,7 @@ def main():
     """Main regeneration process."""
     tracker_dir = Path("/Users/szymonsypniewicz/Documents/tracker")
 
-    html_path = tracker_dir / "investor-intro-links.html"
+    html_path = tracker_dir / "index.html"
     worker_path = tracker_dir / "worker.js"
 
     regenerate_worker_js(html_path, None, worker_path)
