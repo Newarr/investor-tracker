@@ -77,7 +77,7 @@ export default {{
 
 def main():
     """Main regeneration process."""
-    tracker_dir = Path("/Users/szymonsypniewicz/Documents/tracker")
+    tracker_dir = Path("/Users/szymonsypniewicz/Documents/code/tracker")
 
     html_path = tracker_dir / "index.html"
     worker_path = tracker_dir / "worker.js"
@@ -85,7 +85,7 @@ def main():
     regenerate_worker_js(html_path, None, worker_path)
 
     print("\n✓ Ready to deploy!")
-    print("  Run: cd /Users/szymonsypniewicz/Documents/tracker && wrangler deploy")
+    print("  Run: cd /Users/szymonsypniewicz/Documents/code/tracker && wrangler deploy")
 
 if __name__ == '__main__':
     main()

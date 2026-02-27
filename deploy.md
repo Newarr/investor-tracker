@@ -3,7 +3,7 @@
 ## Quick Start (Local Testing)
 
 ```bash
-cd /Users/szymonsypniewicz/Documents/tracker
+cd /Users/szymonsypniewicz/Documents/code/tracker
 python3 server.py
 ```
 
@@ -74,7 +74,7 @@ sudo certbot --nginx -d process.sypniewicz.com
 ### Option 2: Deploy to Fly.io (5 minutes, free tier)
 
 ```bash
-cd /Users/szymonsypniewicz/Documents/tracker
+cd /Users/szymonsypniewicz/Documents/code/tracker
 
 # Create Dockerfile
 cat > Dockerfile <<'EOF'
@@ -116,7 +116,7 @@ Then point process.sypniewicz.com DNS to the Fly.io app.
 ### Option 3: Deploy to Vercel (Simplest, 2 minutes)
 
 ```bash
-cd /Users/szymonsypniewicz/Documents/tracker
+cd /Users/szymonsypniewicz/Documents/code/tracker
 
 # Install Vercel CLI
 npm install -g vercel
